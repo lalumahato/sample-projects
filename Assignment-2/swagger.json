@@ -1,0 +1,215 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation for Testing APIs",
+        "version": "1.0.0",
+        "title": "NodeJS APIs"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "User Registration, Login"
+        },
+        {
+            "name": "User",
+            "description": "User Lists, Delete and Update"
+        }
+    ],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Regitser new user",
+                "operationId": "authenticateAdminUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Login Credentials",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "email",
+                                "phone",
+                                "password"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Peter Parker",
+                                    "description": "Full name of the User"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "example@example.com",
+                                    "description": "Email of the User"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "9087654321",
+                                    "description": "Mobile number of the User"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "format": "password",
+                                    "example": "Test@123",
+                                    "description": "Password of the User"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "status": "success",
+                                "data": {
+                                    "registerType": "user",
+                                    "_id": "6109448db566be1c179f59d2",
+                                    "name": "Gordon Brown",
+                                    "email": "gordon.brown@yahoo.com",
+                                    "phone": "551-415-2483",
+                                    "createdAt": "2021-08-03T13:28:45.366Z"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Login Credentials",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "email",
+                                "password"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "example@example.com",
+                                    "description": "Email of the User"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "format": "password",
+                                    "example": "Test@123",
+                                    "description": "Password of the User"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "status": "success",
+                                "data": {
+                                    "registerType": "user",
+                                    "_id": "6109448db566be1c179f59d2",
+                                    "name": "Gordon Brown",
+                                    "email": "gordon.brown@yahoo.com",
+                                    "phone": "551-415-2483",
+                                    "createdAt": "2021-08-03T13:28:45.366Z"
+                                },
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBhMjYTQzZDVhYjgiLCJlbWFpbCI6IkthdGhlcmluZTc0QHlhaG9vLmNvbSIsInJlZ2lzdGVyVHlwZSI6InjE2MjgwNjQ5MzV9.rL8Ik_3yWEyVwqNexagSFoTKLwPtIZXc5ls"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "status": "failed",
+                                "data": {
+                                    "message": "Inavlid email and password"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/list-users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List all users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "status": "success",
+                                "data": [
+                                    {
+                                        "registerType": "user",
+                                        "_id": "6109448db566be1c079f59d7",
+                                        "name": "Gordon_Brown42",
+                                        "email": "Kailey_Torp@yahoo.com",
+                                        "phone": "551-415-2483",
+                                        "createdAt": "2021-08-03T13:28:45.366Z"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

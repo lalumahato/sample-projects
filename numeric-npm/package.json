@@ -1,0 +1,19 @@
+{
+  "name": "numeric-npm",
+  "version": "3.0.2",
+  "description": "Numeric operation node package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalumahato/numeric-npm.git"
+  },
+  "author": "Lalu Prasad Mahato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lalumahato/numeric-npm/issues"
+  },
+  "homepage": "https://github.com/lalumahato/numeric-npm#readme"
+}

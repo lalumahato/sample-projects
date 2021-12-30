@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "test123#",
+    "database": "nodetest",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "test": {
+    "username": "postgres",
+    "password": "test123#",
+    "database": "unittest",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production": {
+    "username": "postgres",
+    "password": "test123#",
+    "database": "nodetest",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  }
+}

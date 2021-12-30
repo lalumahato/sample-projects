@@ -1,0 +1,22 @@
+{
+  "name": "node-elasticsearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.14.0",
+    "array.prototype.flatmap": "^1.2.4",
+    "express": "^4.17.1",
+    "http-status": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

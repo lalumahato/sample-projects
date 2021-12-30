@@ -1,0 +1,599 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation for Article APIs",
+        "version": "1.0.0",
+        "title": "Node Articles"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "User",
+            "description": "User CRUD APIs"
+        },
+        {
+            "name": "Article",
+            "description": "Article CRUD APIs"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Add new user",
+                "operationId": "addNewUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter user details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "email",
+                                "phone"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Peter Parker",
+                                    "description": "Full name of the User"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "example@gmail.com",
+                                    "description": "Email of the User"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "9087654321",
+                                    "description": "Mobile number of the User"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {
+                                    "id": 6,
+                                    "name": "Eddie Bauch",
+                                    "email": "eddie.bauch@gmail.com",
+                                    "phone": "635-262-0011",
+                                    "updatedAt": "2021-08-16T13:52:09.005Z",
+                                    "createdAt": "2021-08-16T13:52:09.005Z"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "error": "\"phone\" is required"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List all users",
+                "operationId": "listUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": [
+                                    {
+                                        "id": 6,
+                                        "name": "Eddie Bauch",
+                                        "email": "eddie.bauch@gmail.com",
+                                        "phone": "635-262-0011",
+                                        "updatedAt": "2021-08-16T13:52:09.005Z",
+                                        "createdAt": "2021-08-16T13:52:09.005Z"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Find a user",
+                "operationId": "findByPk",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Enter a user id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {
+                                    "id": 6,
+                                    "name": "Eddie Bauch",
+                                    "email": "eddie.bauch@gmail.com",
+                                    "phone": "635-262-0011",
+                                    "updatedAt": "2021-08-16T13:52:09.005Z",
+                                    "createdAt": "2021-08-16T13:52:09.005Z"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "message": "User not found"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user details",
+                "operationId": "updateByPk",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Enter a user id",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter user details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "phone"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Peter Parker",
+                                    "description": "Full name of the User"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "9087654321",
+                                    "description": "Mobile number of the User"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {
+                                    "id": 6,
+                                    "name": "Eddie Bauch",
+                                    "email": "eddie.bauch@gmail.com",
+                                    "phone": "635-262-0011",
+                                    "updatedAt": "2021-08-16T13:52:09.005Z",
+                                    "createdAt": "2021-08-16T13:52:09.005Z"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "message": "User not found"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "error": "\"phone\" is required"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete a user",
+                "operationId": "deleteByPk",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Enter a user id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "message": "User not found"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/article": {
+            "post": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Add new article",
+                "operationId": "addNewArticle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter article details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "title",
+                                "description",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Lorem Ipsum",
+                                    "description": "Title of the article"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                    "description": "Description of the article"
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "format": "integer",
+                                    "example": "1",
+                                    "description": "Id of the user who writting the article"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {
+                                    "id": 1,
+                                    "user_id": 1,
+                                    "title": "Lorem Ipsum",
+                                    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                    "updatedAt": "2021-08-17T12:02:11.676Z",
+                                    "createdAt": "2021-08-17T12:02:11.676Z"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "error": "\"title\" is required"
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "List all articles",
+                "operationId": "listArticles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": [
+                                    {
+                                        "id": 1,
+                                        "title": "Lorem Ipsum",
+                                        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                        "user_id": 1,
+                                        "createdAt": "2021-08-17T12:02:11.676Z",
+                                        "updatedAt": "2021-08-17T12:02:11.676Z",
+                                        "users": {}
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/article/{id}": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Find an article",
+                "operationId": "findArticleByPk",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Enter an article id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {
+                                    "id": 1,
+                                    "title": "Lorem Ipsum",
+                                    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                    "user_id": 1,
+                                    "createdAt": "2021-08-17T12:02:11.676Z",
+                                    "updatedAt": "2021-08-17T12:02:11.676Z",
+                                    "users": {
+                                        "id": 1,
+                                        "name": "Quincy Langosh",
+                                        "email": "quincy.langosh@gmail.com",
+                                        "phone": "927-358-1234"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "message": "Article not found"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Update an article details",
+                "operationId": "updateArticleByPk",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Enter an article id",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter article details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "title",
+                                "description",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Lorem Ipsum",
+                                    "description": "Title of the article"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "format": "string",
+                                    "example": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                    "description": "Description of the article"
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "format": "integer",
+                                    "example": "1",
+                                    "description": "Id of the user who writting the article"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {
+                                    "id": 1,
+                                    "title": "Lorem Ipsum",
+                                    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                                    "user_id": 1,
+                                    "createdAt": "2021-08-17T12:02:11.676Z",
+                                    "updatedAt": "2021-08-17T12:02:11.676Z"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "message": "Article not found"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "error": "\"title\" is required"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Delete an article",
+                "operationId": "deleteArticleByPk",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Enter an article id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Success",
+                        "schema": {
+                            "example": {
+                                "data": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Operation Failed",
+                        "schema": {
+                            "example": {
+                                "message": "Article not found"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

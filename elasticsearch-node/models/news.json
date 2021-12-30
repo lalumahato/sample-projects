@@ -1,0 +1,24 @@
+{
+    "@timestamp": {
+        "type": "date"
+    },
+    "authors": {
+        "type": "text"
+    },
+    "category": {
+        "type": "keyword"
+    },
+    "date": {
+        "type": "date",
+        "format": "iso8601"
+    },
+    "headline": {
+        "type": "text"
+    },
+    "link": {
+        "type": "keyword"
+    },
+    "short_description": {
+        "type": "text"
+    }
+}
